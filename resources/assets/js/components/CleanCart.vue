@@ -1,5 +1,5 @@
 <template>	
-  <lot></lot>
+  <slot></slot>
 </template>
 
 

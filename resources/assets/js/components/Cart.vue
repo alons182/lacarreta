@@ -13,7 +13,7 @@
 					  <td class="align-center">{{ cart[$index].quantity }}</td> 
 					  <td class="align-center"><button class="btn" @click="quantityChange(product, 'incriment')"><i class="close fa fa-plus"></i></button></td> 
 					  <td class="align-center">{{ cart[$index].descripcion | truncate 30  }}</td> 
-					  <td>{{ product.precio  | currency '¢' }}</td> 
+					  <td>{{ product.precio_descuento_ivi  | currency '¢' }}</td> 
 					</tr>
 			  </tbody> 
 		  </table>
@@ -76,26 +76,34 @@
 		  	 productToPhp (product) {
 			      	var datos = {
 			      		codigo: product.codigo,
+			      		codigo_ubicacion: product.codigo_ubicacion,
 			      		descripcion: product.descripcion,
-			      		precio: product.precio,
-			      		quantity: product.quantity
+			      		precio_venta: product.precio_venta,
+			      		quantity: product.quantity,
+			      		descuento: product.descuento,
+			      		paga_impuesto1: product.paga_impuesto1,
+			      		paga_impuesto2: product.paga_impuesto2,
+			      		paga_impuesto3: product.paga_impuesto3,
+			      		impuesto: product.impuesto,
+			      		impuesto2: product.impuesto2,
+			      		impuesto3: product.impuesto3
 			      	}
 
 			      return datos;
 			    },
 		  	addProduct (product) {
 			  
-			      product.precio = (product.descuento > 0 ) ? product.precio_promocion : product.precio_venta;
+			      //product.precio = (product.descuento > 0 ) ? (product.precio_venta - (product.precio_venta * (product.descuento / 100))) : product.precio_venta;
 			      this.cart.push(product);
 			     
-			      this.cartSubTotal = this.cartSubTotal + (product.precio * product.quantity);
+			      this.cartSubTotal = this.cartSubTotal + (product.precio_descuento_ivi * product.quantity);
 			      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
 			     
 			},
 		    removeProduct (product) {
 
 		      this.cart.$remove(product);
-		      this.cartSubTotal = this.cartSubTotal - (product.precio * product.quantity);
+		      this.cartSubTotal = this.cartSubTotal - (product.precio_descuento_ivi * product.quantity);
 		      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
 
 		      /*if(this.cart.length <= 0) {
@@ -137,10 +145,10 @@
 		      }
 
 		      if(direction === "incriment") {
-		        this.cartSubTotal = this.cartSubTotal + product.precio;
+		        this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi;
 
 		      } else {
-		        this.cartSubTotal = this.cartSubTotal - product.precio;
+		        this.cartSubTotal = this.cartSubTotal - product.precio_descuento_ivi;
 		      }
 
 		      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
@@ -167,7 +175,7 @@
 		    }
 		  },
 		  created () {
-		  	this.cart = [];
+		  	this.clearCart();
 		  	var dataStorage = this.fetchStorage();
 		  	for (var i = 0; i < dataStorage.length; i++) {
 			       this.addProduct(dataStorage[i]);

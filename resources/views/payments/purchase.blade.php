@@ -39,19 +39,20 @@
                                 </tr>
                               </thead>
                               <tbody> 
-                                @foreach ($products as $product)
+                                @foreach ($order->details as $line)
                                 <tr class="product"> 
 
-                                  <td class="align-center">{{ $product->descripcion }}</td> 
-                                  <td class="align-center">{{ $product->quantity }}</td> 
-                                  <td>{{ money($product->precio,'¢' ) }}</td> 
-                                  <td>{{ money($product->precio * $product->quantity, '¢' )  }}</td> 
+                                  <td class="align-center">{{ $line->Descripcion }}</td> 
+                                  <td class="align-center">{{ $line->Cant_Facturada }}</td> 
+                                  <td>{{ money(($line->Precio_Venta - $line->Monto_Descuento) + $line->Total_Impuesto ,'¢' ) }} <span class="ivi">I.V.I</span></td> 
+                                  <td>{{ money($line->Total, '¢' )  }}</td> 
                                 </tr>
+
                                 @endforeach
                                 <tr>
                                     <td colspan="2" rowspan="4"></td>
                                     <td colspan="1" class="text-right">Subtotal</td>
-                                    <td class="text-left">{{ money($subtotal,'¢') }}</td>
+                                    <td class="text-left">{{ money($order->Total_Factura,'¢') }}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="1" class="text-right">Envio</td>
@@ -59,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="1" class="text-right">Total</td>
-                                    <td>{{ money($total,'¢') }}</td>
+                                    <td>{{ money($order->Total_Factura + $envio,'¢') }}</td>
                                 </tr>
 
                               </tbody> 
@@ -67,24 +68,7 @@
                       
                     </div>
                   
-                              <input type="hidden" value="0080000039" name="N_Factura" /> 
-                              <input type="hidden" value="" name="Codigo_Cliente" /> 
-                              <input type="hidden" value="{{ auth()->user()->name }}" name="Descrip_Cliente" />  
-                              <input type="hidden" value="0080" name="Codigo_Responsable" />  
-                              <input type="hidden" value="002" name="Codigo_Bodega" />  
-                              <input type="hidden" value="{{ $subtotal }}" name="Monto_Factura" />  
-                              <input type="hidden" value="00003" name="Tipo_Documento" />  
-                              <input type="hidden" value="13" name="Tasa_Impuesto" />  
-                              <input type="hidden" value="0" name="Total_Descuento" /> 
-                              <input type="hidden" value="0" name="Total_Exento" />  
-                              <input type="hidden" value="{{ $subtotal }}" name="Total_Gravado" />  
-                              <input type="hidden" value="{{ $total }}" name="Total_Factura" />  
-                              <input type="hidden" value="0" name="Total_Impuesto" /> 
-                              <input type="hidden" value="001" name="Codigo_Condicion" />  
-                              <input type="hidden" value="0080" name="Codigo_Vendedor" />  
-                              <input type="hidden" value="{{count($products)}}" name="Total_Lineas" />  
-                     
-                   
+                          <input type="hidden" name="order" value="{{ $order->id }}">
                     
                    
                     <button type="submit" class="btn btn-primary">

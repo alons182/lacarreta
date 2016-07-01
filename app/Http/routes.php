@@ -27,6 +27,7 @@ Route::group(['middleware'=>'auth'], function ()
 	Route::get('/payment', 'PaymentsController@payment');
 	Route::post('/purchase', 'PaymentsController@purchase');
 	Route::post('/purchase-response', 'PaymentsController@purchaseResponse');
+	Route::resource('orders', 'OrdersController');
 });
 
 Route::get('/products/{category}', 'ProductsController@index');

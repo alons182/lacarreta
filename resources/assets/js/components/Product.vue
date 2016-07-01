@@ -14,8 +14,8 @@
 				<div class="product-categories"></div>
 				<hr>
 				<div class="product-prices">
-					<span class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_promocion | currency '¢' }}</span> - 
-					<span :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }}</span>
+					<span class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_descuento_ivi | currency '¢' }} </span> - 
+					<span :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }}</span> <span class="ivi">I.V.I</span>
 
 				</div>
 				
@@ -53,7 +53,7 @@
 			 addToCart (product) {
 			 		debugger
 			      var found = false;
-			      product.precio = (product.descuento > 0 ) ? product.precio_promocion : product.precio_venta;
+			       //product.precio = (product.descuento > 0 ) ? (product.precio_venta - (product.precio_venta * (product.descuento / 100))) : product.precio_venta;
 
 			      for (var i = 0; i < this.cart.length; i++) {
 
@@ -73,7 +73,7 @@
 			        this.cart.push(product);
 			      }
 
-			      this.cartSubTotal = this.cartSubTotal + (product.precio * ((this.cant <= 0) ? 1 : this.cant));
+			      this.cartSubTotal = this.cartSubTotal + (product.precio_descuento_ivi * ((this.cant <= 0) ? 1 : this.cant));
 			      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
 			      this.cant = 1;
 			}

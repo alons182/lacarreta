@@ -8,8 +8,8 @@
 			</figure>
 			<div class="product-info">
 				<h3 class="product-name">{{ product.descripcion }}</h3>
-				<div class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_promocion | currency '¢' }}</div>
-				<div :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }}</div>
+				<div class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_descuento_ivi | currency '¢' }} <span class="ivi">I.V.I</span></div>
+				<div :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }} <span class="ivi">I.V.I</span></div>
 				<div class="product-button">
 					<button @click='addToCart(product)' class="btn btn-addCart">Agregar a carrito</button>
 				</div>
@@ -105,7 +105,7 @@
 			 addToCart (product) {
 			 		
 			      var found = false;
-			      product.precio = (product.descuento > 0 ) ? product.precio_promocion : product.precio_venta;
+			      //product.precio = (product.descuento > 0 ) ? (product.precio_venta - (product.precio_venta * (product.descuento / 100))) : product.precio_venta;
 			     
 			      for (var i = 0; i < this.cart.length; i++) {
 
@@ -124,7 +124,7 @@
 			        this.cart.push(product);
 			      }
 			     
-			      this.cartSubTotal = this.cartSubTotal + product.precio;
+			      this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi;
 			      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
 			      //this.checkoutBool = true;
 			}
