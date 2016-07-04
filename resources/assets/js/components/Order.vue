@@ -25,7 +25,7 @@
 				var resource = this.$resource('orders{/id}');
 
 			     
-			      resource.update({id: 1}, {N_Factura: numero_factura}).then((response) => {
+			      resource.update({id: order_id}, {N_Factura: numero_factura}).then((response) => {
 			            console.log(response.status);
 			            console.log(response.data);
 			      }, (response) => {
