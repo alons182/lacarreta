@@ -13,7 +13,9 @@ class OrdersController extends Controller
     {
     	$data = $request->all();
         $order = Order::find($id);
-
+        
+        if(! $order) return "No se Encontro orden para actualizar";
+        
         $order->fill($data);
         $order->save();
 
