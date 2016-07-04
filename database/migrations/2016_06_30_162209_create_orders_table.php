@@ -39,6 +39,7 @@ class CreateOrdersTable extends Migration
             $table->string('Descripcion');
             $table->double('Cant_Facturada', 15, 2)->default(0);
             $table->double('Precio_Venta', 15, 2)->default(0);
+            $table->double('Descuento', 15, 2)->default(0);
             $table->double('Monto_Descuento', 15, 2)->default(0);
             $table->double('Subtotal_Exento', 15, 2)->default(0);
             $table->double('Subtotal_Gravado', 15, 2)->default(0);

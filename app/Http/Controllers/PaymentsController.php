@@ -121,6 +121,7 @@ class PaymentsController extends Controller
             $detail->Subtotal_Gravado = $gravadoLinea;
             $detail->SubTotal = $subtotalLinea;
             $detail->Numero_Linea = $index+1;
+            $detail->Descuento = $p->descuento;
             $detail->Monto_Descuento = $descuentoLinea;
             $detail->Total_Venta = $subtotalLinea;
             $detail->Total = $totalFacturaLinea;
