@@ -28,12 +28,22 @@ elixir(function(mix) {
 
     mix.browserify('app.js');
 
+
+
+    mix.styles([
+            'admin.css'
+        ],'public/css/backend.css','resources/assets/css')
+    mix.scripts([
+            'admin.js'
+        ],'public/js/backend.js','resources/assets/js')
+
+
     mix.version([
         'public/css/bundle.css',
-        //'public/css/backend.css',
+        'public/css/backend.css',
         'public/js/bundle.js',
         'public/js/app.js',
-        //'public/js/backend.js'
+        'public/js/backend.js'
     ]);
 
 

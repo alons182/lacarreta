@@ -1,5 +1,7 @@
 {
-  "css/bundle.css": "css/bundle-458db37c6a.css",
-  "js/app.js": "js/app-3fe2a52a9b.js",
+  "css/backend.css": "css/backend-2998d7acaa.css",
+  "css/bundle.css": "css/bundle-2c49e4bc01.css",
+  "js/app.js": "js/app-b2f066a26d.js",
+  "js/backend.js": "js/backend-43de092421.js",
   "js/bundle.js": "js/bundle-ba4f58dc7e.js"
 }

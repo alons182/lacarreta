@@ -46,6 +46,22 @@ Route::group(['prefix' => 'admin', 'middleware'=>'authByRole:administrator'], fu
 		'uses' => 'Admin\DashboardController@index'
 		
 	]);
+	 # Users
+    Route::get('users/register', [
+        'as'   => 'user_register',
+        'uses' => 'Admin\UsersController@create'
+    ]);
+
+    Route::post('users/register', [
+        'as'   => 'user_register.store',
+        'uses' => 'Admin\UsersController@store'
+    ]);
+
+    Route::resource('users', 'Admin\UsersController');
+
+     Route::resource('orders', 'Admin\OrdersController');
+
+
 });
 
 

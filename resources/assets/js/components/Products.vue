@@ -1,7 +1,9 @@
 <template>
 	
 	<div class='row-products'>
-		<div class="loader" v-show="loader">Loading...</div>
+		<div class="loader-container" v-show="loader">
+			<div class="loader">Loading...</div>
+		</div>
   		<div v-for='product in productsData' track-by='$index' class='product-item {{ product.descripcion | slugify }}'>
 			<figure class="product-img">
 				<a href="/products/{{ product.codigo_categoria }}/{{ product.codigo_categoria2 }}/{{ product.codigo_categoria }}/{{ product.codigo }}"><img src="/img/product-no-image.jpg" alt="product" /></a>
@@ -92,6 +94,7 @@
 			           this.loader = false;
 			      },(response) => {
 			          console.log('error');
+			          this.loader = false;
 			      });
 
 

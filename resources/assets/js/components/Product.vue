@@ -1,7 +1,9 @@
 <template>
 	
 	<div class='product-details'>
-		<div class="loader" v-show="loader">Loading...</div>
+		<div class="loader-container" v-show="loader">
+			<div class="loader">Loading...</div>
+		</div>
 		<div class="product-media">
 			<figure class="product-img">
 				<a href="#"><img src="/img/product-no-image.jpg" alt="product" /></a>
@@ -51,7 +53,7 @@
 		methods: {
 
 			 addToCart (product) {
-			 		debugger
+			 		
 			      var found = false;
 			       //product.precio = (product.descuento > 0 ) ? (product.precio_venta - (product.precio_venta * (product.descuento / 100))) : product.precio_venta;
 
