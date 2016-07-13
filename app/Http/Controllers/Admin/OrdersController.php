@@ -20,7 +20,7 @@ class OrdersController extends Controller
         			  ->orWhere('Descrip_Cliente','like','%'.$search.'%');
         	})->paginate(10);
         }else{
-        	$orders = Order::paginate(10);
+        	$orders = Order::orderBy('created_at','DESC')->paginate(10);
         }
 
         
