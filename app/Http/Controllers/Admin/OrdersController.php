@@ -47,6 +47,10 @@ class OrdersController extends Controller
             flash('Orden No Encontrada.. No se pudo eliminar','danger');
             return Redirect()->route('admin.orders.index');
         }
+        
+        foreach ($order as $detail) {
+            $detail->delete();
+        }
 
         $order->delete();
 
