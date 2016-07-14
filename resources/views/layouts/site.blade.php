@@ -43,8 +43,8 @@
 			 <!--<a href="#" class="btn btn-cart header-btn-cart"><i class="icon-shopping-cart"></i>Carrito</a>-->
 			
 			<div class="header-services">
-				<div class="header-services-item"><i class="icon-comment"></i> Free Shipping</div>
-				<div class="header-services-item"><i class="icon-truck"></i> Free Return</div>
+				<div class="header-services-item"><i class="icon-phone"></i> +(506) 9999 99 99</div>
+				<div class="header-services-item"><i class="icon-truck"></i> Envio a todo Guanacaste</div>
 				
 			</div>
 			</div>

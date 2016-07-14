@@ -12761,6 +12761,8 @@ exports.default = {
 			this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi * (this.cant <= 0 ? 1 : this.cant);
 			this.cartTotal = this.cartSubTotal + this.tax * this.cartSubTotal;
 			this.cant = 1;
+
+			this.$dispatch("alertMessage", 'Producto Agregado al carrito!!');
 		}
 	},
 	filters: {

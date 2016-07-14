@@ -2300,12 +2300,13 @@ input[type=number].input-number–noSpinners::-webkit-outer-spin-button {
   display: none;
 }
 .header-services-item {
-  width: 40%;
+  width: 33%;
   display: inline-block;
   vertical-align: top;
 }
 .header-services-item i {
   font-size: 2rem;
+  vertical-align: middle;
 }
 .header-menu {
   display: none;
@@ -2440,7 +2441,7 @@ input[type=number].input-number–noSpinners::-webkit-outer-spin-button {
     float: right;
     text-align: center;
     padding: 3rem 0;
-    width: 50%;
+    width: 60%;
   }
   .header-menu {
     display: block;
