@@ -12,13 +12,6 @@
 </head>
 
 <body>
-	@if (session()->has('flash_message'))
-
-	<alert type="{!! session()->get('flash_message_level') !!}" important>{!! session()->get('flash_message') !!}</alert>
-
-    @endif
-	<div class="alert messageCart" v-show="messageCart">@{{ messageCart }}</div>
-
 	<section class="top">
 		<div class="inner">
 			<div class="top-account">
@@ -131,6 +124,12 @@
 			</div>
 		</div>
 	</footer>
+	@if (session()->has('flash_message'))
+
+	<alert type="{!! session()->get('flash_message_level') !!}" important>{!! session()->get('flash_message') !!}</alert>
+
+    @endif
+	<div class="alert messageCart" v-show="messageCart">@{{ messageCart }}</div>
 	<script src="{{ elixir('js/app.js') }}"></script>
 	<script src="{{ elixir('js/bundle.js') }}"></script>
 	@yield('scripts')
