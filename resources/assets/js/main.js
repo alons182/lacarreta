@@ -30,7 +30,13 @@
       paginationSpeed : 400,*/
       /*singleItem:true*/
   });
-
+ $(window).scroll(function () {
+          if ($(this).scrollTop() > 150) {
+              $('.header-btn-cart').addClass("fixed");
+          } else {
+              $('.header-btn-cart').removeClass("fixed");
+          }
+      });
   
 
     

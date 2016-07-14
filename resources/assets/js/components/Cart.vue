@@ -9,11 +9,12 @@
 					  <input type="hidden" name="prods[]" value="{{ productToPhp(product) | stringify }}" >
 					  
 					  <td class="align-left"><div class="cartImage" @click="removeProduct(product)" v-bind:style="{ backgroundImage: 'url( /img/product-no-image.jpg  )' }" style="background-size: cover; background-position: center;}"><i class="close fa fa-times"></i></div></td> 
-					  <td class="align-center"><button class="btn" @click="quantityChange(product, 'decriment')"><i class="close fa fa-minus"></i></button></td> 
-					  <td class="align-center">{{ cart[$index].quantity }}</td> 
-					  <td class="align-center"><button class="btn" @click="quantityChange(product, 'incriment')"><i class="close fa fa-plus"></i></button></td> 
+					  <td class="align-center"><span class="btn btn-cart" @click="quantityChange(product, 'decriment')"><i class="close fa fa-minus"></i></span></td> 
+					  <td class="align-center"><input type="number"  v-show="type != 'full'" @keyup="quantityChangeFromInput(product)" v-model="cart[$index].quantity" class="cart-quantity input-number–noSpinners"  min="1" number/> <span v-show="type == 'full'">{{ cart[$index].quantity }}</span></td> 
+					  <td class="align-center"><span class="btn btn-cart" @click="quantityChange(product, 'incriment')"><i class="close fa fa-plus"></i></span></td> 
 					  <td class="align-center">{{ cart[$index].descripcion | truncate 30  }}</td> 
 					  <td>{{ product.precio_descuento_ivi  | currency '¢' }}</td> 
+
 					</tr>
 			  </tbody> 
 		  </table>
@@ -66,6 +67,7 @@
 			watch: {
 				cart: {
 					handler (cart) {
+						
 					  this.saveStorage(cart);
 					},
 					deep: true
@@ -117,6 +119,27 @@
 		      this.cartTotal = 0;
 		      //this.checkoutBool = false;
 		      this.showCart = false;
+		    },
+		    quantityChangeFromInput (product) {
+		    	console.log('keyup')
+		    	this.cartSubTotal = 0;
+				this.cartTotal = 0;
+
+		    	 for (var i = 0; i < this.cart.length; i++) {
+		    	
+					if (this.cart[i].codigo === product.codigo) {
+			 
+			  
+			            this.cart.$set(i, product);
+ 						
+ 					}
+		    	 	
+		    	 	this.cartSubTotal = this.cartSubTotal + (this.cart[i].precio_descuento_ivi * this.cart[i].quantity);
+				    this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
+			        
+		      }
+
+		     
 		    },
 
 		    quantityChange (product, direction) {

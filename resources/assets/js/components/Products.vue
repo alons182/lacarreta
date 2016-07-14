@@ -4,6 +4,7 @@
 		<div class="loader-container" v-show="loader">
 			<div class="loader">Loading...</div>
 		</div>
+		
   		<div v-for='product in productsData' track-by='$index' class='product-item {{ product.descripcion | slugify }}'>
 			<figure class="product-img">
 				<a href="/products/{{ product.codigo_categoria }}/{{ product.codigo_categoria2 }}/{{ product.codigo_categoria }}/{{ product.codigo }}"><img src="/img/product-no-image.jpg" alt="product" /></a>
@@ -15,7 +16,9 @@
 				<div class="product-button">
 					<button @click='addToCart(product)' class="btn btn-addCart">Agregar a carrito</button>
 				</div>
+				
 			</div>
+			
 		</div>
   	</div> 
 	<nav v-show="showPagination == 1">
@@ -44,6 +47,7 @@
 
 
 <script>
+
 	export default {
 		name: 'products',
 		props: [ 'cart', 'tax', 'cartSubTotal', 'cartTotal','filterProducts','filterCategory', 'limitProducts', 'showPagination'],
@@ -52,6 +56,7 @@
 				productsData: {	},
 				pagination: { },
 				loader: false
+				
 				
 				
 				
@@ -130,6 +135,10 @@
 			      this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi;
 			      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
 			      //this.checkoutBool = true;
+			     
+			      
+				  this.$dispatch("alertMessage", 'Producto Agregado al carrito!!');
+
 			}
 
 		},

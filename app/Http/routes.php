@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+Route::get('/', 'PagesController@index');
 Route::get('/about', function () {
 	
 	// dd(\DB::table('CARRETA.ARTICULOS')->where('Descontinuado', 0)->get());
