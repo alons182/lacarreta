@@ -2,7 +2,7 @@
 	<div class="loader-container" v-show="loader">
 			<div class="loader">Loading...</div>
 		</div>
-	<slot></slot> <span>{{ data.N_Factura }}</span>
+	<slot></slot> <span>{{ data.N_Factura }}</span> - <span>Comprobante : {{ data.order_id }}</span>
   
 </template>
 

@@ -12704,7 +12704,7 @@ exports.default = {
 	}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"loader-container\" v-show=\"loader\">\n\t\t<div class=\"loader\">Loading...</div>\n\t</div>\n<slot></slot> <span>{{ data.N_Factura }}</span>\n \n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"loader-container\" v-show=\"loader\">\n\t\t<div class=\"loader\">Loading...</div>\n\t</div>\n<slot></slot> <span>{{ data.N_Factura }}</span> - <span>Comprobante : {{ data.order_id }}</span>\n \n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
