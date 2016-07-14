@@ -48,11 +48,12 @@ class OrdersController extends Controller
             return Redirect()->route('admin.orders.index');
         }
         
-        foreach ($order as $detail) {
+        foreach ($order->details as $detail) {
             $detail->delete();
         }
 
         $order->delete();
+      
 
         flash('Orden Eliminada','success');
 
