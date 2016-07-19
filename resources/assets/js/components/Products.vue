@@ -14,7 +14,7 @@
 				<div class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_descuento_ivi | currency '¢' }} <span class="ivi">I.V.I</span></div>
 				<div :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }} <span class="ivi">I.V.I</span></div>
 				<div class="product-button">
-					<button @click='addToCart(product)' class="btn btn-addCart">Agregar a carrito</button>
+					<input type="number" v-model="product.cantToCart" class="product-quantity"  min="1" number /><button @click='addToCart(product)' class="btn btn-addCart">Agregar a <i class="icon-shopping-cart"></i></button>
 				</div>
 				
 			</div>
@@ -36,7 +36,7 @@
 	        </li>
 	        <li v-if="pagination.current_page < pagination.last_page">
 	            <a href="#" aria-label="Next"
-	               @click.prevent="changePage(pagination.current_page)">
+	               @click.prevent="changePage(pagination.current_page + 1)">
 	                <span aria-hidden="true">&raquo;</span>
 	            </a>
 	        </li>
@@ -119,7 +119,7 @@
 
 			        if (this.cart[i].codigo === product.codigo) {
 			          var newProduct = this.cart[i];
-			          newProduct.quantity = newProduct.quantity + 1;
+			          newProduct.quantity = newProduct.quantity + ((product.cantToCart <= 0) ? 1 :  product.cantToCart);
 			          this.cart.$set(i, newProduct);
 			          //console.log("DUPLICATE",  this.cart[i].product + "'s quantity is now: " + this.cart[i].quantity);
 			          found = true;
@@ -128,14 +128,13 @@
 			      }
 
 			      if(!found) {
-			        product.quantity = 1;
+			        product.quantity = (product.cantToCart <= 0) ? 1 : product.cantToCart;
 			        this.cart.push(product);
 			      }
 			     
-			      this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi;
+			      this.cartSubTotal = this.cartSubTotal + (product.precio_descuento_ivi * ((product.cantToCart <= 0) ? 1 :  product.cantToCart));
 			      this.cartTotal = this.cartSubTotal + (this.tax * this.cartSubTotal);
-			      //this.checkoutBool = true;
-			     
+			      product.cantToCart = 1;
 			      
 				  this.$dispatch("alertMessage", 'Producto Agregado al carrito!!');
 

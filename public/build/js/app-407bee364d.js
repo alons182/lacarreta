@@ -12888,7 +12888,7 @@ exports.default = {
 
 				if (this.cart[i].codigo === product.codigo) {
 					var newProduct = this.cart[i];
-					newProduct.quantity = newProduct.quantity + 1;
+					newProduct.quantity = newProduct.quantity + (product.cantToCart <= 0 ? 1 : product.cantToCart);
 					this.cart.$set(i, newProduct);
 					//console.log("DUPLICATE",  this.cart[i].product + "'s quantity is now: " + this.cart[i].quantity);
 					found = true;
@@ -12897,13 +12897,13 @@ exports.default = {
 			}
 
 			if (!found) {
-				product.quantity = 1;
+				product.quantity = product.cantToCart <= 0 ? 1 : product.cantToCart;
 				this.cart.push(product);
 			}
 
-			this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi;
+			this.cartSubTotal = this.cartSubTotal + product.precio_descuento_ivi * (product.cantToCart <= 0 ? 1 : product.cantToCart);
 			this.cartTotal = this.cartSubTotal + this.tax * this.cartSubTotal;
-			//this.checkoutBool = true;
+			product.cantToCart = 1;
 
 			this.$dispatch("alertMessage", 'Producto Agregado al carrito!!');
 		}
@@ -12949,7 +12949,7 @@ exports.default = {
 	}
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\t\n\t<div class=\"row-products\">\n\t\t<div class=\"loader-container\" v-show=\"loader\">\n\t\t\t<div class=\"loader\">Loading...</div>\n\t\t</div>\n\t\t\n  \t\t<div v-for=\"product in productsData\" track-by=\"$index\" class=\"product-item {{ product.descripcion | slugify }}\">\n\t\t\t<figure class=\"product-img\">\n\t\t\t\t<a href=\"/products/{{ product.codigo_categoria }}/{{ product.codigo_categoria2 }}/{{ product.codigo_categoria }}/{{ product.codigo }}\"><img src=\"/img/product-no-image.jpg\" alt=\"product\"></a>\n\t\t\t</figure>\n\t\t\t<div class=\"product-info\">\n\t\t\t\t<h3 class=\"product-name\">{{ product.descripcion }}</h3>\n\t\t\t\t<div class=\"product-price product-price-promo\" v-show=\"product.descuento > 0 \"> {{ product.precio_descuento_ivi | currency '¢' }} <span class=\"ivi\">I.V.I</span></div>\n\t\t\t\t<div :class=\"['product-price', product.descuento > 0 ? 'tachado' : '']\"> {{ product.precio_venta | currency '¢' }} <span class=\"ivi\">I.V.I</span></div>\n\t\t\t\t<div class=\"product-button\">\n\t\t\t\t\t<button @click=\"addToCart(product)\" class=\"btn btn-addCart\">Agregar a carrito</button>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n  \t</div> \n\t<nav v-show=\"showPagination == 1\">\n\t  \t<ul class=\"pagination\">\n\t        <li v-if=\"pagination.current_page > 1\">\n\t            <a href=\"#\" aria-label=\"Previous\" @click.prevent=\"changePage(pagination.current_page - 1)\">\n\t                <span aria-hidden=\"true\">«</span>\n\t            </a>\n\t        </li>\n\t        <li v-for=\"page in pagesNumber\" v-bind:class=\"[ page == isActived ? 'active' : '']\">\n\t            <a href=\"#\" @click.prevent=\"changePage(page)\">{{ page }}</a>\n\t        </li>\n\t        <li v-if=\"pagination.current_page < pagination.last_page\">\n\t            <a href=\"#\" aria-label=\"Next\" @click.prevent=\"changePage(pagination.current_page)\">\n\t                <span aria-hidden=\"true\">»</span>\n\t            </a>\n\t        </li>\n\t    </ul>\n\t</nav>\n\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\t\n\t<div class=\"row-products\">\n\t\t<div class=\"loader-container\" v-show=\"loader\">\n\t\t\t<div class=\"loader\">Loading...</div>\n\t\t</div>\n\t\t\n  \t\t<div v-for=\"product in productsData\" track-by=\"$index\" class=\"product-item {{ product.descripcion | slugify }}\">\n\t\t\t<figure class=\"product-img\">\n\t\t\t\t<a href=\"/products/{{ product.codigo_categoria }}/{{ product.codigo_categoria2 }}/{{ product.codigo_categoria }}/{{ product.codigo }}\"><img src=\"/img/product-no-image.jpg\" alt=\"product\"></a>\n\t\t\t</figure>\n\t\t\t<div class=\"product-info\">\n\t\t\t\t<h3 class=\"product-name\">{{ product.descripcion }}</h3>\n\t\t\t\t<div class=\"product-price product-price-promo\" v-show=\"product.descuento > 0 \"> {{ product.precio_descuento_ivi | currency '¢' }} <span class=\"ivi\">I.V.I</span></div>\n\t\t\t\t<div :class=\"['product-price', product.descuento > 0 ? 'tachado' : '']\"> {{ product.precio_venta | currency '¢' }} <span class=\"ivi\">I.V.I</span></div>\n\t\t\t\t<div class=\"product-button\">\n\t\t\t\t\t<input type=\"number\" v-model=\"product.cantToCart\" class=\"product-quantity\" min=\"1\" number=\"\"><button @click=\"addToCart(product)\" class=\"btn btn-addCart\">Agregar a <i class=\"icon-shopping-cart\"></i></button>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t</div>\n\t\t\t\n\t\t</div>\n  \t</div> \n\t<nav v-show=\"showPagination == 1\">\n\t  \t<ul class=\"pagination\">\n\t        <li v-if=\"pagination.current_page > 1\">\n\t            <a href=\"#\" aria-label=\"Previous\" @click.prevent=\"changePage(pagination.current_page - 1)\">\n\t                <span aria-hidden=\"true\">«</span>\n\t            </a>\n\t        </li>\n\t        <li v-for=\"page in pagesNumber\" v-bind:class=\"[ page == isActived ? 'active' : '']\">\n\t            <a href=\"#\" @click.prevent=\"changePage(page)\">{{ page }}</a>\n\t        </li>\n\t        <li v-if=\"pagination.current_page < pagination.last_page\">\n\t            <a href=\"#\" aria-label=\"Next\" @click.prevent=\"changePage(pagination.current_page + 1)\">\n\t                <span aria-hidden=\"true\">»</span>\n\t            </a>\n\t        </li>\n\t    </ul>\n\t</nav>\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
