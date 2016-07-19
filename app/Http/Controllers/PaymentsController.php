@@ -143,7 +143,7 @@ class PaymentsController extends Controller
         
          $order = Order::with('details')->find($order_id);
          
-   		return view('payments.purchase-response')->with(compact('order'));
+   		return view('payments.purchase-response')->with(compact('order','order_id'));
 
    }
 }
