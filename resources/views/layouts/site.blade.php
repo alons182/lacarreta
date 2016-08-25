@@ -17,6 +17,9 @@
 </head>
 
 <body>
+	@if (env('BETA'))
+		<div class="alert-error" style="text-align:center;">El Sitio se encuentra en construcción</div>
+    @endif
 	<section class="top">
 		<div class="inner">
 			<div class="top-account">
@@ -32,6 +35,7 @@
 			<search></search>
 		</div>
 	</section>
+
 	<div class="clear"></div>
 	<header class="header">
 		<div class="inner relative">
@@ -129,6 +133,7 @@
 			</div>
 		</div>
 	</footer>
+	
 	@if (session()->has('flash_message'))
 
 	<alert type="{!! session()->get('flash_message_level') !!}" important>{!! session()->get('flash_message') !!}</alert>
