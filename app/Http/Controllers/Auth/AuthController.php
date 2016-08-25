@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use App\Mailers\ContactMailer;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -35,9 +36,10 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ContactMailer $mailer)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->mailer = $mailer;
     }
 
     /**
@@ -71,6 +73,18 @@ class AuthController extends Controller
         ]);
 
         $user->assignRole(2); // cliente
+
+       
+        flash('Cuenta Creada correctamente. se te ha enviado un correo con la información de usuario.','success');
+
+
+        try {
+             $this->mailer->welcome($user->toArray());
+            //$this->newsletterList->subscribeTo('Guanacaste Vende',$request->get('email'),$request->get('username'),'');
+
+        } catch (\Mailchimp_Error $e) {
+            flash($e->getMessage());
+        }
         
         return $user;
     }
