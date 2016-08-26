@@ -15,13 +15,6 @@
 </p>
 <p>Nuestro sistema cuenta con los más altos estándares de seguridad para que podás hacer transacciones con <b>tu tarjeta de débito o crédito</b> sin ningún problema gracias a la seguridad <b>Verify by Visa y Mastercard SecureCode.</b></p>
 
-<img src="{{ url('/img/facebook.jpg') }}"
-     alt="Facebook">
-<img src="{{ url('/img/facebook.jpg') }}"
-     alt="Facebook">
-<img src="{{ url('/img/facebook.jpg') }}"
-     alt="Facebook">
-
 
 </body>
 </html>
