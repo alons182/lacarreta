@@ -14,6 +14,37 @@ require('laravel-elixir-vue');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    /*mix.sass('app.scss')
+       .browserify('app.js');*/
+    mix.stylus('main.styl', 'resources/assets/css');
+    mix.styles([
+         'owl.carousel.css',
+         'main.css'
+         ],'public/css/bundle.css','resources/assets/css')
+
+    mix.scripts([
+         'owl.carousel.js',
+         'jquery.hoverIntent.minified.js',
+         'main.js',
+         ],'public/js/bundle.js','resources/assets/js');
+
+    mix.webpack('app.js');
+
+
+     mix.styles([
+            'admin.css'
+        ],'public/css/backend.css','resources/assets/css')
+    mix.scripts([
+            'admin.js'
+        ],'public/js/backend.js','resources/assets/js')
+
+
+    mix.version([
+        'public/css/bundle.css',
+        'public/css/backend.css',
+        'public/js/bundle.js',
+        'public/js/app.js',
+        'public/js/backend.js'
+    ]);
+
 });
