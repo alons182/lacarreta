@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Http\Requests\ContactRequest;
+use App\Http\Requests\CotizarRequest;
+use App\Mail\ContactForm;
+use App\Mail\CotizarForm;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -13,5 +17,39 @@ class PagesController extends Controller
         $isHome = true;
         
         return view('pages.index')->with(compact('isHome'));
+    }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    public function contact()
+    {
+    	return view('pages.contact');
+    }
+    public function postContact(ContactRequest $request)
+    {
+    	$data = $request->all();
+
+        Mail::to('alonso@avotz.com')->send(new ContactForm($data));
+
+        Flash('Cotización enviada correctamente','success');
+
+        return Redirect()->back();
+    }
+    public function cotizar()
+    {
+        return view('pages.cotizar');
+    }
+    public function postCotizar(CotizarRequest $request)
+    {
+        $data = $request->all();
+       
+        Mail::to('alonso@avotz.com')->send(new CotizarForm($data));
+
+        Flash('Cotización enviada correctamente','success');
+
+        return Redirect()->back();
     }
 }

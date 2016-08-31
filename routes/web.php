@@ -12,12 +12,12 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@postContact');
+Route::get('/cotizar', 'PagesController@cotizar');
+Route::post('/cotizar', 'PagesController@postCotizar');
+Route::get('/about', 'PagesController@about');
 
-Route::get('/about', function () {
-	
-	// dd(\DB::table('CARRETA.ARTICULOS')->where('Descontinuado', 0)->get());
-    return view('pages.about');
-});
 
 Route::get('/checkout', 'PaymentsController@checkout');
 

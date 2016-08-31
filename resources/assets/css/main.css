@@ -1989,6 +1989,15 @@ input[type=number].input-number–noSpinners::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 32px;
+  width: 100%;
+}
+textarea {
+  width: 100%;
+}
 .hr {
   border: 0;
   height: 1px;
@@ -2612,6 +2621,30 @@ input[type=number].input-number–noSpinners::-webkit-outer-spin-button {
 }
 .pagination li a:hover {
   background-color: #000;
+}
+.contact-social {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.contact-social-link {
+  display: inline-block;
+  font-size: 2.5rem;
+  color: #2e3192;
+  padding: 0.5rem;
+}
+.contact-address-title {
+  margin-bottom: 0.5rem;
+}
+.contact-form {
+  margin-top: 1rem;
+}
+.form-contact .form-group {
+  margin-bottom: 0.5rem;
+}
+@media screen and (min-width: 640px) {
+  .contact-social {
+    float: right;
+  }
 }
 table {
   background-color: transparent;
