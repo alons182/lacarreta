@@ -6,7 +6,7 @@
 		</div>
 		<div class="product-media">
 			<figure class="product-img">
-				<a href="#"><img src="/img/product-no-image.jpg" alt="product" /></a>
+				<a href="#"><img src="/img/products/{{ product.codigo | removeZeros }}.jpg" alt="product" /></a>
 			</figure>
 		</div>
   		<div class='product-info' sku='{{ $codigo }}'>
@@ -102,7 +102,11 @@
 
 					  return value;
 
-			    }
+			    },
+			    removeZeros(value){
+						value = value.replace(/^[0|\D]*/,'');//replaceAll("^0*", "");
+				return value;//.replaceFirst("^0+(?!$)", "")
+			}
 		},
 		created () {
 			 this.loader = true;
