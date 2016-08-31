@@ -8,7 +8,7 @@
 			<div class="main-content">
 		
 					<h1 class="contact-title">Cotizar</h1>
-					 <p class="intro">En esta sección vas a poder mandarnos tus cotizaciones, ya sea que nos escribas los artículos en la sección de comentarios o que subas un archivo con los materiales que necesitas cotizar. En Depósito de Materiales La Carreta, estamos para servirte!!
+					 <p class="intro">En esta sección vas a poder mandarnos tus cotizaciones, ya sea que nos escribas los artículos en la sección de comentarios o que subas un archivo con los materiales que necesitas cotizar. En <b>Depósito de Materiales La Carreta</b>, estamos para servirte!!
 			                </p>
 					
 			         <div class="form cotizar-form">

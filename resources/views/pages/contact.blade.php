@@ -8,7 +8,7 @@
 			<div class="main-content">
 		
 					<h1 class="contact-title">Contáctenos</h1>
-					 <p class="intro">"Llamanos o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Deposito de Materiales La Carreta</b> estamos para servirte !! Responderemos tus consultas en menos de 72 horas.
+					 <p class="intro">"Llamanos o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Depósito de Materiales La Carreta</b> estamos para servirte !! Responderemos tus consultas en menos de 72 horas.
 			                "</p>
 					<address class="contact-address">
 			            <h2 class="contact-address-title">Horario de atención</h2>

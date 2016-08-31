@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Información del formulario de cotización de Deposito de Materiales La Carreta</title>
+    <title>Información del formulario de cotización de Depósito de Materiales La Carreta</title>
 </head>
 <body>
 <strong>Nombre :</strong> {{ $data['name'] }} <br />
