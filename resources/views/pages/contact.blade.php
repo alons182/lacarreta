@@ -8,14 +8,14 @@
 			<div class="main-content">
 		
 					<h1 class="contact-title">Contáctenos</h1>
-					 <p class="intro">"Llamanos o escribínos para solucionar cualquier duda o consulta que tengas, en <b>La Carreta</b> estamos para servirte !! Responderemos tus consultas en menos de 72 horas.
+					 <p class="intro">"Llamanos o escribínos para solucionar cualquier duda o consulta que tengas, en <b>Deposito de Materiales La Carreta</b> estamos para servirte !! Responderemos tus consultas en menos de 72 horas.
 			                "</p>
 					<address class="contact-address">
 			            <h2 class="contact-address-title">Horario de atención</h2>
 			            De Lunes a Sabado de 08:00 am a 5:00 pm<br/>
 
 			            <span><b>Email:</b> info@grupolacarretacr.com</span><br/>
-			            <span><b>Telefono:</b> 2222 2222</span>
+			            <span><b>Telefono:</b> 2690 9300 | 2665 0568</span>
 			            <div class="contact-social">
 			                <a class="contact-social-link" href="#" target="_blank"><i class="icon-facebook"></i></a>
 			                <a class="contact-social-link" href="#" target="_blank"><i class="icon-twitter"></i></a>

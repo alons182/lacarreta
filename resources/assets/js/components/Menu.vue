@@ -23,7 +23,7 @@
                             </ul>
                         </li>
                          <li class="header-menu-item">
-                            <a href="/" class="header-menu-link">Cotizaciones</a>
+                            <a href="/cotizar" class="header-menu-link">Cotizaciones</a>
                         </li>
                         <!--<li class="header-menu-item menu-item-has-children">
                             <a href="#" class="header-menu-link">Otros</a>
