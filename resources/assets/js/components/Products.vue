@@ -8,7 +8,7 @@
   		<div v-for='product in productsData' track-by='$index' class='product-item {{ product.descripcion | slugify }}'>
 			<figure class="product-img">
 				<a href="/products/{{ product.codigo_categoria }}/{{ product.codigo_categoria2 }}/{{ product.codigo_categoria }}/{{ product.codigo }}">
-				<img src="/img/products/{{ product.codigo | removeZeros }}.jpg" alt="product" /></a>
+				<img src="/img/products/{{ product.codigo | removeZeros }}.png" alt="product" /></a>
 			</figure>
 			<div class="product-info">
 				<h3 class="product-name">{{ product.descripcion }}</h3>

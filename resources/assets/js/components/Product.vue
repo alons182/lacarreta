@@ -6,7 +6,7 @@
 		</div>
 		<div class="product-media">
 			<figure class="product-img">
-				<a href="#"><img src="/img/products/{{ product.codigo | removeZeros }}.jpg" alt="product" /></a>
+				<a href="#"><img src="/img/products/{{ product.codigo | removeZeros }}.png" alt="product" /></a>
 			</figure>
 		</div>
   		<div class='product-info' sku='{{ $codigo }}'>
