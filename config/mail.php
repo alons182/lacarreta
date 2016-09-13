@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'noreply@grupolacarretacr.com',
+        'address' => 'alonso@avotz.com',
         'name' => 'Grupo la Carreta',
     ],
 

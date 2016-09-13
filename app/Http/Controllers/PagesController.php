@@ -34,7 +34,7 @@ class PagesController extends Controller
 
         Mail::to('alonso@avotz.com')->send(new ContactForm($data));
 
-        Flash('Cotización enviada correctamente','success');
+        Flash('Consulta enviada correctamente','success');
 
         return Redirect()->back();
     }
