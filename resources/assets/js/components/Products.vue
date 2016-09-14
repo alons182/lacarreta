@@ -90,7 +90,9 @@
 		methods: {
 
 			 fetchData (page){
-			 	this.loader = true;
+			 	 this.loader = true;
+			 	 var loadbar = $(".load-bar");
+			 	 loadbar.addClass('show');
 				 var resource = this.$resource('http://201.203.229.106:90/api/v1/products{/codigo}');
 
 			     var data = {filter: this.filterProducts, filterByCategory: this.filterCategory, limit: this.limitProducts, page: page};
@@ -98,9 +100,11 @@
 			          this.productsData = response.data.data;
 			          this.$set('pagination', response.data.paginator);
 			           this.loader = false;
+			           loadbar.removeClass('show');
 			      },(response) => {
 			          console.log('error');
 			          this.loader = false;
+			          loadbar.removeClass('show');
 			      });
 
 

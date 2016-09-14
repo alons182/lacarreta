@@ -26,6 +26,11 @@
 </head>
 
 <body>
+	<div class="load-bar" title="Cargando...">
+	  <div class="bar"></div>
+	  <div class="bar"></div>
+	  <div class="bar"></div>
+	</div>
 	@if (env('BETA'))
 		<div class="alert-error" style="text-align:center;">El Sitio se encuentra en construcción</div>
     @endif
