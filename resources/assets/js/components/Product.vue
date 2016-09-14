@@ -110,12 +110,15 @@
 		},
 		created () {
 			 this.loader = true;
+			  var loadbar = $(".load-bar");
+			 	 loadbar.addClass('show');
 			 var resource = this.$resource('http://201.203.229.106:90/api/v1/products{/codigo}');
 
 		      // GET someItem/1
 		      resource.get({codigo: this.codigo}).then((response) => {
 		          this.product = response.data.data;
 				  this.loader = false;
+				  loadbar.removeClass('show');
 		      });
 
 
