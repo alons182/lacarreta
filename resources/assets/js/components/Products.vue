@@ -13,7 +13,7 @@
 			<div class="product-info">
 				<h3 class="product-name">{{ product.descripcion }}</h3>
 				<div class="product-price product-price-promo" v-show="product.descuento > 0 "> {{ product.precio_descuento_ivi | currency '¢' }} <span class="ivi">I.V.I</span></div>
-				<div :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_venta | currency '¢' }} <span class="ivi">I.V.I</span></div>
+				<div :class="['product-price', product.descuento > 0 ? 'tachado' : '']"> {{ product.precio_ivi | currency '¢' }} <span class="ivi">I.V.I</span></div>
 				<div class="product-button">
 					<input type="number" v-model="product.cantToCart" class="product-quantity"  min="1" number /><button @click='addToCart(product)' class="btn btn-addCart">Agregar a <i class="icon-shopping-cart"></i></button>
 				</div>
