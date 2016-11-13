@@ -25,7 +25,7 @@ class UserEditRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'.auth()->id()
             'password' => 'confirmed|size:6',
         ];
     }
