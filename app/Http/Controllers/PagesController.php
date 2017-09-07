@@ -32,7 +32,7 @@ class PagesController extends Controller
     {
     	$data = $request->all();
 
-        Mail::to('alonso@avotz.com')->send(new ContactForm($data));
+        Mail::to('ocastilloleal@gmail.com')->send(new ContactForm($data));
 
         Flash('Consulta enviada correctamente','success');
 
@@ -46,7 +46,7 @@ class PagesController extends Controller
     {
         $data = $request->all();
        
-        Mail::to('alonso@avotz.com')->send(new CotizarForm($data));
+        Mail::to('ocastilloleal@gmail.com')->send(new CotizarForm($data));
 
         Flash('Cotización enviada correctamente','success');
 
